@@ -1,182 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BeTaxi — Taxi everywhere</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --nav-height: 70px;
+    }
+    body {
+      background-color: #111;
+      padding-top: var(--nav-height);
+      margin: 0;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .navbar.fixed-top {
+      height: var(--nav-height);
+    }
+    .navbar .navbar-brand img {
+      height: calc(var(--nav-height) - 30px);
+    }
+    .hero-section {
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+    }
+    html, body { overflow-x: hidden; }
+    .order-box { max-width: 420px; width: 100%; }
+    .order-box.shadow { box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+    .phone-underline {
+      display: inline-block;
+      border-bottom: 3px solid #f6c800;
+      padding-bottom: .125rem;
+    }
+    .standards-section {
+      background: url("images/secondbg.jpeg") center center / cover fixed no-repeat;
+      min-height: 100vh;
+    }
+  </style>
 </head>
 <body>
-    
-    
-  <div class="first-background" id="order">
-
-  <div class="top-bar">
-    <div class="logo">
-      <img src="images/logo.png" alt="error loading">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+      <img src="images/logo.png" alt="BeTaxi logo" class="me-2">
+      <span class="fw-bold text-warning">BETAXI</span>
+    </a>
+    <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end bg-dark" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center small">
+        <li class="nav-item"><a class="nav-link py-1" href="#order">Order</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#standards">Standards</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#localizations">Localizations</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#prices">Prices</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link text-warning fw-bold py-1" href="#buy">Buy now</a></li>
+      </ul>
     </div>
-
-    
-    <div class="menu-toggle">&#9776;</div>
-
-    <ul class="menu-bar">
-      <li><a href="#order" class="active">ORDER</a></li>
-      <li><a href="#standards">STANDARDS</a></li>
-      <li><a href="#localizations">LOCALIZATIONS</a></li>
-      <li><a href="#prices">PRICES</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#buy">BUY NOW</a></li>
-    </ul>
   </div>
+</nav>
 
-  <div class="written">
-    <p>Taxi everywhere, <br> anywhere</p>
-    <p>Call now</p>
-    <p class="number">+333-111-555</p>
-  </div>
-
-  <div class="order-box">
-    <div class="order-text">
-      <h2 class="order-taxi-now">Order TAXI now</h2>
-      <p>Fast, convenient and affordable. Enter your location and service details.</p>
-    </div>
-
-    <form action="">
-      <select>
-        <option value="">Choose your car</option>
-        <option value="economy">Economy</option>
-        <option value="comfort">Comfort</option>
-        <option value="suv">SUV</option>
-        <option value="luxury">Luxury</option>
-      </select>
-
-      <div class="input-row">
-        <input type="text" placeholder="From">
-        <input type="text" placeholder="To">
+<section class="hero-section text-white" id="order" style="background-image: url(images/backgroundimage.jpg);">
+  <div class="container hero-inner">
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+        <h1 class="fw-bold display-5 display-lg-4">Taxi everywhere,<br>Anywhere</h1>
+        <p class="mt-2 fs-6">Call now</p>
+        <p class="fw-bold fs-4 text-warning phone-underline">+23 111 222 333</p>
       </div>
-
-      <textarea placeholder="Enter your message"></textarea>
-
-      <button type="submit">Order now</button>
-    </form>
-  </div>
-
-</div>
-
- 
- <div class="standards-background" id="standards">
-    <h2>High standards - low prices <br> We are always ready to pick you up - 24/7</h2>
-    <div class="standards-row">
-      <div class="standard-box">
-        <img src="images/comfortable.png" alt="">
-        <h3>Comfortable</h3>
-        <p>you will have comfortable rides all over pakistan</p>
-      </div>
-      <div class="standard-box">
-        <img src="images/4minutes.png" alt="">
-        <h3>4 minutes taxi</h3>
-        <p>4 minutes and it will reach you .</p>
-      </div>
-      <div class="standard-box">
-        <img src="images/pleasant.png" alt="">
-        <h3>Pleasant</h3>
-        <p>have a pleasant evening with our taxi .</p>
+      <div class="col-lg-5 ms-lg-auto d-flex justify-content-center justify-content-lg-end">
+        <div class="order-box bg-warning text-dark rounded p-3 p-md-4 shadow d-flex flex-column">
+          <h3 class="fw-bold fs-5 mb-1">Order taxi now</h3>
+          <p class="small mb-3">Book your ride quickly and easily. Choose your car, enter your locations, and we’ll be there.</p>
+          <form class="d-flex flex-column h-100">
+            <div class="mb-2">
+              <select class="form-select form-select-sm w-100">
+                <option selected>Choose your car</option>
+                <option>Standard</option>
+                <option>Luxury</option>
+                <option>Van</option>
+              </select>
+            </div>
+            <div class="row g-2 mb-2">
+              <div class="col-6">
+                <input class="form-control form-control-sm" placeholder="From" />
+              </div>
+              <div class="col-6">
+                <input class="form-control form-control-sm" placeholder="To" />
+              </div>
+            </div>
+            <div class="mb-2">
+              <textarea class="form-control form-control-sm" rows="3" placeholder="Message"></textarea>
+            </div>
+            <div class="d-flex justify-content-start mt-auto">
+              <button type="submit" class="btn btn-dark btn-sm" style="width:20%;">Order Now</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-
-
-<div class="localizations-background" id="localizations">
-  <h2>See where we drive</h2>
-  <div class="map-placeholder">
-    <p>Map will appear here</p>
-  </div>
-</div>
-
-
-
-<div class="prices-background" id="prices">
-  
-  
-  <div class="prices-left">
-    <h2>10% Discount for <br> previous clients</h2>
-    <p>Our taxi service offers affordable rides with the best quality. 
-       Choose between economy, comfort, or luxury cars with clear prices upfront.</p>
-    <a href="#order" class="order-btn">Order Now</a>
-  </div>
-
-  
-  <div class="prices-right">
-    <div class="price-box white-box">
-      <h3>Normal Car</h3>
-      <h2>$10 <br> per mile</h2>
-      <p> normal car will have this price it is for the middle class people </p>
-    </div>
-    <div class="price-box black-box">
-      <h3>Luxury Car</h3>
-      <h2>$25 <br>per mile</h2>
-      <p>luuxury cars will have this price it give you luxury</p>
+<section class="standards-section d-flex align-items-center text-center text-dark py-5" id="standards">
+  <div class="container">
+    <h2 class="fw-bold mb-5 display-6">
+      High standards - low prices <br>
+      <small class="fw-normal">We are always ready to pick you up - 24/7</small>
+    </h2>
+    <div class="row g-5 justify-content-center">
+      <div class="col-12 col-md-4">
+        <div class="p-3">
+          <img src="images/comfortable.png" alt="Comfortable" class="img-fluid mb-3" style="width:150px; height:150px;">
+          <h3 class="h5 fw-bold text-dark">Comfortable</h3>
+          <p class="text-secondary">You will have comfortable rides all over Pakistan.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="p-3">
+          <img src="images/4minutes.png" alt="4 minutes taxi" class="img-fluid mb-3" style="width:150px; height:150px;">
+          <h3 class="h5 fw-bold text-dark">4 minutes taxi</h3>
+          <p class="text-secondary">4 minutes and it will reach you.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="p-3">
+          <img src="images/pleasant.png" alt="Pleasant" class="img-fluid mb-3" style="width:150px; height:150px;">
+          <h3 class="h5 fw-bold text-dark">Pleasant</h3>
+          <p class="text-secondary">Have a pleasant evening with our taxi.</p>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-</div>
-
-
-
-
-<div class="about-background" id="about">
-
-  
-  <div class="about-left">
-    <div class="image-grid">
-      <img src="images/about1.jpg" alt="">
-      <img src="images/about2.jpg" alt="">
-      <img src="images/about3.jpg" alt="">
-      <img src="images/about4.jpg" alt="">
+<section id="localizations" class="bg-dark text-white text-center py-5">
+  <div class="container">
+    <h2 class="fw-bold mb-5">See where we drive</h2>
+    <div class="bg-secondary d-flex align-items-center justify-content-center" style="height:600px; border-radius:8px;">
+      <p class="fs-5 m-0">Map will appear here</p>
     </div>
   </div>
+</section>
 
- 
-  <div class="about-right">
-    <h2>About Us</h2>
-    <p>
-      We are one of the leading taxi services in the region, offering reliable,
-      fast, and affordable rides for customers everywhere. Our mission is to
-      connect people with safe and comfortable transportation 24/7. <br><br>
-
-      we ensure that every journey is not just about getting from point A to point B, but
-      about enjoying a comfortable and pleasant ride. <br><br>
-
-      We continuously improve our services, bringing you innovative solutions such
-      as instant booking, transparent pricing, and excellent customer support.
-    <br><br>
-
-      Our company is built on trust, quality, and customer satisfaction — values that
-      guide us in every ride we provide. Thank you for choosing us as your travel partner.
-    </p>
-    <a href="#order" class="order-btn2">Order Now</a>
+<section id="prices" class="bg-warning py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 text-lg-start text-center">
+        <h2 class="fw-bold display-5 mb-3">10% Discount for <br> previous clients</h2>
+        <p class="text-dark fs-6 mb-4">
+          Our taxi service offers affordable rides with the best quality. 
+          Choose between economy, comfort, or luxury cars with clear prices upfront.
+        </p>
+        <a href="#order" class="btn btn-dark btn-lg">Order Now</a>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card h-100 shadow-lg border-0 rounded-3">
+              <div class="card-body text-center p-4">
+                <h3 class="h6 fw-bold">Normal Car</h3>
+                <h2 class="fw-bold display-6 my-4">$10 <br><small class="fs-6">per mile</small></h2>
+                <p class="small text-secondary">
+                  Normal cars will have this price, suitable for middle-class people.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100 shadow-lg border-0 rounded-3 bg-dark text-white">
+              <div class="card-body text-center p-4">
+                <h3 class="h6 fw-bold">Luxury Car</h3>
+                <h2 class="fw-bold display-6 my-4">$25 <br><small class="fs-6">per mile</small></h2>
+                <p class="small">
+                  Luxury cars will have this price and give you a premium experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
- 
+<section id="about" class="bg-warning py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-12 col-sm-6">
+            <img src="images/about1.jpg" class="img-fluid rounded shadow" alt="About 1">
+          </div>
+          <div class="col-12 col-sm-6">
+            <img src="images/about2.jpg" class="img-fluid rounded shadow" alt="About 2">
+          </div>
+          <div class="col-12 col-sm-6">
+            <img src="images/about3.jpg" class="img-fluid rounded shadow" alt="About 3">
+          </div>
+          <div class="col-12 col-sm-6">
+            <img src="images/about4.jpg" class="img-fluid rounded shadow" alt="About 4">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-dark">
+        <h2 class="fw-bold mb-4">About Us</h2>
+        <p class="mb-3">
+          We are one of the leading taxi services in the region, offering reliable,
+          fast, and affordable rides for customers everywhere. Our mission is to
+          connect people with safe and comfortable transportation 24/7.
+        </p>
+        <p class="mb-3">
+          We ensure that every journey is not just about getting from point A to point B, but
+          about enjoying a comfortable and pleasant ride.
+        </p>
+        <p class="mb-3">
+          We continuously improve our services, bringing you innovative solutions such
+          as instant booking, transparent pricing, and excellent customer support.
+        </p>
+        <p class="mb-4">
+          Our company is built on trust, quality, and customer satisfaction — values that
+          guide us in every ride we provide. Thank you for choosing us as your travel partner.
+        </p>
+        <a href="#order" class="btn btn-dark">Order Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-warning text-center py-5"  >
+  <h2 class="fw-bold display-6" style="color: #0f0f0f;">Have a Nice Trip!</h2>
 </div>
 
-
-<div class="trip-banner">
-  <h2>Have a Nice Trip!</h2>
-</div>
-
-
-<footer class="footer">
-  <p>All rights reserved © 2025</p>
+<footer class="bg-dark text-center py-3">
+  <p class="mb-0 small" style="color:#b9b7b7;">All rights reserved © 2025</p>
 </footer>
 
-
- 
-
-
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
