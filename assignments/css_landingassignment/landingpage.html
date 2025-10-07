@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BeTaxi — Taxi everywhere</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --nav-height: 70px;
+    }
+    body {
+      background-color: #111;
+      padding-top: var(--nav-height);
+      margin: 0;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .navbar.fixed-top {
+      height: var(--nav-height);
+    }
+    .navbar .navbar-brand img {
+      height: calc(var(--nav-height) - 30px);
+    }
+    .hero-section {
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+    }
+    html, body { overflow-x: hidden; }
+    .order-box { max-width: 420px; width: 100%; }
+    .order-box.shadow { box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+    
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+      <img src="image/logo.png" alt="BeTaxi logo" class="me-2">
+      <span class="fw-bold text-warning">BETAXI</span>
+    </a>
+    <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end bg-dark" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center small">
+        <li class="nav-item"><a class="nav-link py-1" href="#order">Order</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#standards">Standards</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#localizations">Localizations</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#prices">Prices</a></li>
+        <li class="nav-item"><a class="nav-link py-1" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link text-warning fw-bold py-1" href="#buy">Buy now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero-section text-white" id="order" style="background-image: url(image/backgroundimage.jpg);">
+  <div class="container hero-inner">
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+        <h1 class="fw-bold display-5 display-lg-4">Taxi everywhere,<br>Anywhere</h1>
+        <p class="mt-2 fs-6">Call now</p>
+        <p class="fw-bold fs-4 text-warning phone-underline">+23 111 222 333</p>
+      </div>
+      <div class="col-lg-5 ms-lg-auto d-flex justify-content-center justify-content-lg-end">
+        <div class="order-box bg-warning text-dark rounded p-3 p-md-4 shadow d-flex flex-column">
+          <h3 class="fw-bold fs-5 mb-1">Order taxi now</h3>
+          <p class="small mb-3">Book your ride quickly and easily. Choose your car, enter your locations, and we’ll be there.</p>
+          <form class="d-flex flex-column h-100">
+            <div class="mb-2">
+              <select class="form-select form-select-sm w-100">
+                <option selected>Choose your car</option>
+                <option>Standard</option>
+                <option>Luxury</option>
+                <option>Van</option>
+              </select>
+            </div>
+            <div class="row g-2 mb-2">
+              <div class="col-6">
+                <input class="form-control form-control-sm" placeholder="From" />
+              </div>
+              <div class="col-6">
+                <input class="form-control form-control-sm" placeholder="To" />
+              </div>
+            </div>
+            <div class="mb-2">
+              <textarea class="form-control form-control-sm" rows="3" placeholder="Message"></textarea>
+            </div>
+            <div class="d-flex justify-content-start mt-auto">
+                  <a href="data.html" class="btn btn-dark btn-sm" style="width:20%;">Order Now</a>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

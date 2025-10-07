@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users API Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+    }
+    table, th, td {
+      border: 1px solid #999;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #ddd;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 2px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #333;
+      color: white;
+    }
+    .form-box {
+      width: 300px;
+      margin: 20px auto;
+      padding: 10px;
+      background: white;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+      width: 90%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Users Data</h1>
+
+  <div style="text-align:center;">
+    <button onclick="getData()">Load Users</button>
+  </div>
+
+  <table id="userTable">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </table>
+
+  <div class="form-box">
+    <h3>Add User</h3>
+    <input type="text" id="name" placeholder="Enter name"><br>
+    <input type="text" id="email" placeholder="Enter email"><br>
+    <button onclick="addUser()">Add</button>
+  </div>
+
+  <script>
+    const apiUrl = "https://jsonplaceholder.typicode.com/users";
+
+    // READ
+    function getData() {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          let table = document.getElementById("userTable");
+          table.innerHTML = `
+            <tr>
+              <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+            </tr>
+          `;
+          data.forEach(user => {
+            let row = `<tr>
+              <td>${user.id}</td>
+              <td>${user.name}</td>
+              <td>${user.email}</td>
+              <td>
+                <button onclick="editUser(${user.id})">Edit</button>
+                <button onclick="deleteUser(${user.id})">Delete</button>
+              </td>
+            </tr>`;
+            table.innerHTML += row;
+          });
+        });
+    }
+
+    // CREATE
+    function addUser() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+
+      fetch(apiUrl, {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({name: name, email: email})
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("User Added: " + JSON.stringify(data));
+      });
+    }
+
+    // UPDATE
+    function editUser(id) {
+      let newName = prompt("Enter new name:");
+      let newEmail = prompt("Enter new email:");
+
+      fetch(apiUrl + "/" + id, {
+        method: "PUT",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({name: newName, email: newEmail})
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("User Updated: " + JSON.stringify(data));
+      });
+    }
+
+    // DELETE
+    function deleteUser(id) {
+      fetch(apiUrl + "/" + id, { method: "DELETE" })
+        .then(() => {
+          alert("User Deleted: " + id);
+        });
+    }
+  </script>
+</body>
+</html>
