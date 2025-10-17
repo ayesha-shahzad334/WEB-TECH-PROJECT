@@ -1,0 +1,64 @@
+<div class="checkout-bg d-flex justify-content-center align-items-start">
+  <div class="card shadow-lg p-4 checkout-card border-0 col-md-8 mt-5">
+    <h2 class="text-center fw-bold mb-4">Checkout</h2>
+
+    <form id="checkoutForm">
+      <div class="row g-4">
+
+        
+        <div class="col-md-6">
+          <h5 class="mb-3 section-heading">Billing Information</h5>
+
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="fullname" class="form-control" placeholder="Ayesha Shahzad">
+            <span id="nameError" class="error-msg text-danger small"></span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="ayesha@example.com">
+            <span id="emailError" class="error-msg text-danger small"></span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" id="phone" class="form-control" placeholder="+23 111 222 333">
+            <span id="phoneError" class="error-msg text-danger small"></span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" id="address" class="form-control" placeholder="Street, City, Country">
+            <span id="addressError" class="error-msg text-danger small"></span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <select id="payment" class="form-select">
+              <option value="">Select Method</option>
+              <option>Credit Card</option>
+              <option>Debit Card</option>
+              <option>PayPal</option>
+            </select>
+            <span id="paymentError" class="error-msg text-danger small"></span>
+          </div>
+        </div>
+
+        
+        <div class="col-md-6">
+          <h5 class="mb-3 section-heading">Order Summary</h5>
+          <div class="order-summary rounded p-4">
+            <p class="d-flex justify-content-between mb-2"><span>Taxi Type:</span><span>Luxury Car</span></p>
+            <p class="d-flex justify-content-between mb-2"><span>From:</span><span>City Center</span></p>
+            <p class="d-flex justify-content-between mb-2"><span>To:</span><span>Airport</span></p>
+            <p class="d-flex justify-content-between mb-2"><span>Distance:</span><span>10 miles</span></p>
+            <hr>
+            <p class="fw-bold d-flex justify-content-between"><span>Total:</span><span>$250</span></p>
+            <button type="submit" class="btn btn-pay w-100 mt-3">Pay Now</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

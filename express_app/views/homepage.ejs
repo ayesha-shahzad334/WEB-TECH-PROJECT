@@ -1,0 +1,49 @@
+<div class="first-background" id="order">
+
+  <div class="container mt-5 pt-5">
+    <div class="row align-items-center">
+
+      
+      <div class="col-12 col-md-6 text-center text-md-start written">
+        <p>Taxi everywhere, <br> anywhere</p>
+        <p>Call now</p>
+        <p class="number">+333-111-555</p>
+      </div>
+
+     
+      <div class="col-12 col-md-6 d-flex justify-content-center">
+        <div class="order-box">
+          <div class="order-text text-center mb-3">
+            <h2 class="order-taxi-now">Order TAXI now</h2>
+            <p>Fast, convenient and affordable. Enter your location and service details.</p>
+          </div>
+
+          <form id="orderForm">
+            <select id="car">
+              <option value="">Choose your car</option>
+              <option value="economy">Economy</option>
+              <option value="comfort">Comfort</option>
+              <option value="suv">SUV</option>
+              <option value="luxury">Luxury</option>
+            </select>
+
+            <div class="input-row">
+              <input type="text" id="from" placeholder="From">
+              <input type="text" id="to" placeholder="To">
+            </div>
+
+            <textarea id="message" placeholder="Enter your message"></textarea>
+
+            <button type="submit" id="orderBtn">
+              Order now
+              <span class="spinner" id="loader" style="display:none;"></span>
+            </button>
+
+            <div id="orderMsg" class="text-center mt-2"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
