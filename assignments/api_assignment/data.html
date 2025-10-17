@@ -1,33 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Users API Example</title>
+  <title>Users API Example (Button IDs)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #bb7575;
       margin: 20px;
-      background: #f4f4f4;
     }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
+    h1 { text-align: center; }
     table {
       width: 80%;
       margin: 20px auto;
       border-collapse: collapse;
       background: white;
     }
-    table, th, td {
-      border: 1px solid #999;
-    }
-    th, td {
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background: #ddd;
-    }
+    table, th, td { border: 1px solid #080808; }
+    th, td { padding: 8px; text-align: center; }
+    th { background: #a78686; }
     button {
       padding: 5px 10px;
       margin: 2px;
@@ -35,7 +25,7 @@
     }
     button:hover {
       background: #333;
-      color: white;
+      color: rgb(230, 179, 179);
     }
     .form-box {
       width: 300px;
@@ -53,11 +43,8 @@
   </style>
 </head>
 <body>
-  <h1>Users Data</h1>
 
-  <div style="text-align:center;">
-    <button onclick="getData()">Load Users</button>
-  </div>
+  <h1>Users Data</h1>
 
   <table id="userTable">
     <tr>
@@ -72,77 +59,103 @@
     <h3>Add User</h3>
     <input type="text" id="name" placeholder="Enter name"><br>
     <input type="text" id="email" placeholder="Enter email"><br>
-    <button onclick="addUser()">Add</button>
+    <button id="addBtn">Add</button><br><br>
+
+    <h3>Manage User</h3>
+    <input type="text" id="userId" placeholder="Enter user ID"><br>
+    <button id="updateBtn">Update</button>
+    <button id="deleteBtn">Delete</button>
   </div>
 
   <script>
-    const apiUrl = "https://jsonplaceholder.typicode.com/users";
+    window.onload = function() {
+      var apiUrl = "https://jsonplaceholder.typicode.com/users";
 
-    // READ
-    function getData() {
-      fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => {
-          let table = document.getElementById("userTable");
-          table.innerHTML = `
-            <tr>
-              <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
-            </tr>
-          `;
-          data.forEach(user => {
-            let row = `<tr>
-              <td>${user.id}</td>
-              <td>${user.name}</td>
-              <td>${user.email}</td>
-              <td>
-                <button onclick="editUser(${user.id})">Edit</button>
-                <button onclick="deleteUser(${user.id})">Delete</button>
-              </td>
-            </tr>`;
-            table.innerHTML += row;
+      
+      getData();
+
+      
+      document.getElementById("addBtn").onclick = addUser;
+      document.getElementById("updateBtn").onclick = editUser;
+      document.getElementById("deleteBtn").onclick = deleteUser;
+
+      
+      function getData() {
+        fetch(apiUrl)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            var table = document.getElementById("userTable");
+            table.innerHTML = `
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+    
+              </tr>
+            `;
+            for (var i = 0; i < data.length; i++) {
+              var user = data[i];
+              var row = "<tr>" +
+                "<td>" + user.id + "</td>" +
+                "<td>" + user.name + "</td>" +
+                "<td>" + user.email + "</td>" +
+              
+              "</tr>";
+              table.innerHTML += row;
+            }
           });
+      }
+
+      
+      function addUser() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+
+        fetch(apiUrl, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ name: name, email: email })
+        })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          alert("User Added:\n" + JSON.stringify(data));
         });
-    }
+      }
 
-    // CREATE
-    function addUser() {
-      let name = document.getElementById("name").value;
-      let email = document.getElementById("email").value;
+      
+      function editUser() {
+        var id = document.getElementById("userId").value;
+        var newName = prompt("Enter new name:");
+        var newEmail = prompt("Enter new email:");
 
-      fetch(apiUrl, {
-        method: "POST",
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify({name: name, email: email})
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert("User Added: " + JSON.stringify(data));
-      });
-    }
-
-    // UPDATE
-    function editUser(id) {
-      let newName = prompt("Enter new name:");
-      let newEmail = prompt("Enter new email:");
-
-      fetch(apiUrl + "/" + id, {
-        method: "PUT",
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify({name: newName, email: newEmail})
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert("User Updated: " + JSON.stringify(data));
-      });
-    }
-
-    // DELETE
-    function deleteUser(id) {
-      fetch(apiUrl + "/" + id, { method: "DELETE" })
-        .then(() => {
-          alert("User Deleted: " + id);
+        fetch(apiUrl + "/" + id, {
+          method: "PUT",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ name: newName, email: newEmail })
+        })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          alert("User Updated:\n" + JSON.stringify(data));
         });
-    }
+      }
+
+      
+      function deleteUser() {
+        var id = document.getElementById("userId").value;
+
+        fetch(apiUrl + "/" + id, { method: "DELETE" })
+          .then(function() {
+            alert("User Deleted: " + id);
+          });
+      }
+    };
   </script>
+
 </body>
 </html>
