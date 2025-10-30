@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Service</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taxi Service</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-  <div class="first-background" id="order">
+  <header class="top-bar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Taxi Company Logo">
+    </div>
 
-    <div class="top-bar">
-      <div class="logo">
-        <img src="image/logo.png" alt="error loading">
-      </div>
+    <input type="checkbox" id="menu-checkbox" class="menu-checkbox">
+    <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
 
-      
-      <input type="checkbox" id="menu-checkbox" class="menu-checkbox">
-      <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
-
+    <nav>
       <ul class="menu-bar">
         <li><a href="#order" class="active">ORDER</a></li>
         <li><a href="#standards">STANDARDS</a></li>
@@ -27,41 +24,126 @@
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#buy">BUY NOW</a></li>
       </ul>
-    </div>
+    </nav>
+  </header>
 
-    <div class="written">
-      <p>Taxi everywhere, <br> anywhere</p>
-      <p>Call now</p>
-      <p class="number">+333-111-555</p>
-    </div>
-
-    <div class="order-box">
-      <div class="order-text">
-        <h2 class="order-taxi-now">Order TAXI now</h2>
-        <p>Fast, convenient and affordable. Enter your location and service details.</p>
+  <main>
+    <section class="first-background" id="order">
+      <div class="written">
+        <p>Taxi everywhere, <br> anywhere</p>
+        <p>Call now</p>
+        <p class="number">+333-111-555</p>
       </div>
 
-      <form action="">
-        <select>
-          <option value="">Choose your car</option>
-          <option value="economy">Economy</option>
-          <option value="comfort">Comfort</option>
-          <option value="suv">SUV</option>
-          <option value="luxury">Luxury</option>
-        </select>
-
-        <div class="input-row">
-          <input type="text" placeholder="From">
-          <input type="text" placeholder="To">
+      <div class="order-box">
+        <div class="order-text">
+          <h2 class="order-taxi-now">Order TAXI now</h2>
+          <p>Fast, convenient and affordable. Enter your location and service details.</p>
         </div>
 
-        <textarea placeholder="Enter your message"></textarea>
+        <form action="#">
+          <select>
+            <option value="">Choose your car</option>
+            <option value="economy">Economy</option>
+            <option value="comfort">Comfort</option>
+            <option value="suv">SUV</option>
+            <option value="luxury">Luxury</option>
+          </select>
 
-        <button type="submit">Order now</button>
-      </form>
-    </div>
+          <div class="input-row">
+            <input type="text" placeholder="From">
+            <input type="text" placeholder="To">
+          </div>
 
-  </div>
+          <textarea placeholder="Enter your message"></textarea>
 
+          <button type="submit">Order now</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="standards-background" id="standards">
+      <h2 class="std-line">High standards - low prices <br> We are always ready to pick you up - 24/7</h2>
+      <div class="standards-row">
+        <div class="standard-box">
+          <img src="images/comfortable.png" alt="Comfortable ride icon">
+          <h3>Comfortable</h3>
+          <p>You will have comfortable rides all over Pakistan.</p>
+        </div>
+        <div class="standard-box">
+          <img src="images/4minutes.png" alt="4 minutes response icon">
+          <h3>4 Minutes Taxi</h3>
+          <p>4 minutes and it will reach you.</p>
+        </div>
+        <div class="standard-box">
+          <img src="images/pleasant.png" alt="Pleasant experience icon">
+          <h3>Pleasant</h3>
+          <p>Have a pleasant evening with our taxi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="localizations-background" id="localizations">
+      <h2>See where we drive</h2>
+      <div class="map-placeholder">
+        <p>Map will appear here</p>
+      </div>
+    </section>
+
+    <section class="prices-background" id="prices">
+      <div class="prices-left">
+        <h2>10% Discount for <br> Previous Clients</h2>
+        <p>Our taxi service offers affordable rides with the best quality.
+           Choose between economy, comfort, or luxury cars with clear prices upfront.</p>
+        <a href="#order" class="order-btn">Order Now</a>
+      </div>
+
+      <div class="prices-right">
+        <div class="price-box white-box">
+          <h3>Normal Car</h3>
+          <h2>$10 <br> per mile</h2>
+          <p>Normal car will have this price. It is for middle class people.</p>
+        </div>
+        <div class="price-box black-box">
+          <h3>Luxury Car</h3>
+          <h2>$25 <br> per mile</h2>
+          <p>Luxury cars will have this price. It gives you true luxury.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-background" id="about">
+      <div class="about-left">
+        <div class="image-grid">
+          <img src="images/about1.jpg" alt="Taxi driver">
+          <img src="images/about2.jpg" alt="Passenger in taxi">
+          <img src="images/about3.jpg" alt="Luxury taxi interior">
+          <img src="images/about4.jpg" alt="Taxi on road">
+        </div>
+      </div>
+
+      <div class="about-right">
+        <h2>About Us</h2>
+        <p>We are one of the leading taxi services in the region, offering reliable,
+        fast, and affordable rides for customers everywhere. Our mission is to
+        connect people with safe and comfortable transportation 24/7.</p>
+        <p>We ensure that every journey is not just about getting from point A to point B,
+        but about enjoying a comfortable and pleasant ride.</p>
+        <p>We continuously improve our services, bringing you innovative solutions such
+        as instant booking, transparent pricing, and excellent customer support.</p>
+        <p>Our company is built on trust, quality, and customer satisfaction — values that
+        guide us in every ride we provide.</p>
+        <a href="#order" class="order-btn2">Order Now</a>
+      </div>
+    </section>
+
+    <section class="trip-banner">
+      <h2>Have a Nice Trip!</h2>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>All rights reserved © 2025</p>
+  </footer>
 </body>
 </html>

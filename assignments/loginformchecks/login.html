@@ -2,126 +2,280 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Form</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Checkout Page (jQuery Validation)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-  
-  <script>
-  function bindings() {
-
-    const form = document.getElementById('signupForm');
-    form.onsubmit = validateForm; 
-
-    function showError(id, message) {
-      document.getElementById(id).innerText = message;
-    }
-
-    function clearErrors() {
-      const errorSpans = document.querySelectorAll('.error-msg');
-      errorSpans.forEach(span => span.innerText = '');
-    }
-
-    function validateForm(event) {
-      event.preventDefault(); 
-      clearErrors();
-      let valid = true;
-
-      const name = document.getElementById('fullname').value.trim();
-      if (name === '') {
-        showError('nameError', 'Full Name is required');
-        valid = false;
-      }
-
-      const email = document.getElementById('email').value.trim();
-      if (email === '' || !email.includes('@') || !email.includes('.')) {
-        showError('emailError', 'Enter a valid email');
-        valid = false;
-      }
-
-      const contact = document.getElementById('contact').value.trim();
-      const phoneRegex = /^[0-9]{10}$/;
-      if (!phoneRegex.test(contact)) {
-        showError('contactError', 'Enter a valid 10-digit contact number');
-        valid = false;
-      }
-
-      const gender = document.getElementById('gender').value;
-      if (gender === '') {
-        showError('genderError', 'Please select your gender');
-        valid = false;
-      }
-
-      const agree = document.getElementById('agree').checked;
-      if (!agree) {
-        showError('agreeError', 'You must agree to Terms & Conditions');
-        valid = false;
-      }
-
-      if (valid) {
-        alert('Form submitted successfully!');
-        form.reset();
-      }
-    }
-  }
-
-  window.onload = function() {
-    bindings();
-  };
-</script>
 
 </head>
-<body>
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h3 class="text-center mb-4">Sign Up</h3>
-        <form id="signupForm">
-          <div class="mb-3">
-            <label for="fullname" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="fullname" placeholder="Enter full name">
-            <span class="text-danger error-msg" id="nameError"></span>
-          </div>
 
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
-            <span class="text-danger error-msg" id="emailError"></span>
-          </div>
+  <script>
+    function bindings() {
+      
+      $("#termsCheck").on("change", function () {
+        $("#placeOrder").prop("disabled", !$(this).is(":checked"));
+      });
 
-          <div class="mb-3">
-            <label for="contact" class="form-label">Contact Number</label>
-            <input type="text" class="form-control" id="contact" placeholder="Enter contact number">
-            <span class="text-danger error-msg" id="contactError"></span>
-          </div>
+      
+      $("input[name='payment']").on("change", function () {
+        if ($("#card").is(":checked")) {
+          $("#cardDetails").removeClass("d-none");
+        } else {
+          $("#cardDetails").addClass("d-none");
+        }
+      });
 
-          <div class="mb-3">
-            <label class="form-label">Gender</label>
-            <select class="form-select" id="gender">
-              <option value="">Select Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-            <span class="text-danger error-msg" id="genderError"></span>
-          </div>
+      
+      $("#checkoutForm").on("submit", function (e) {
+        e.preventDefault();
 
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="agree">
-            <label class="form-check-label" for="agree">I agree to Terms & Conditions</label>
-            <span class="text-danger error-msg d-block" id="agreeError"></span>
-          </div>
+        let valid = true;
 
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Register</button>
+        
+        function invalidate(el) {
+          el.addClass("is-invalid").removeClass("is-valid");
+          valid = false;
+        }
+        function validate(el) {
+          el.removeClass("is-invalid").addClass("is-valid");
+        }
+
+        const name = $("#fullName");
+        if (name.val().trim().length < 3) invalidate(name); else validate(name);
+
+        const email = $("#email");
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!emailPattern.test(email.val().trim())) invalidate(email); else validate(email);
+
+        const phone = $("#phone");
+        if (!/^\d{10,}$/.test(phone.val().trim())) invalidate(phone); else validate(phone);
+
+        const city = $("#city");
+        if (city.val().trim() === "") invalidate(city); else validate(city);
+
+        const address = $("#address");
+        if (address.val().trim() === "") invalidate(address); else validate(address);
+
+        const postal = $("#postal");
+        if (!/^\d{4,6}$/.test(postal.val().trim())) invalidate(postal); else validate(postal);
+
+        const country = $("#country");
+        if (country.val() === "") invalidate(country); else validate(country);
+
+
+        if ($("input[name='payment']:checked").length === 0) {
+      $("#paymentError").show();
+       valid = false;
+} else {
+  $("#paymentError").hide(); 
+}
+
+      
+        $("input[name='payment']").on("change", function () {
+  if ($("#card").is(":checked")) {
+    $("#cardDetails").removeClass("d-none");
+  } else {
+    $("#cardDetails").addClass("d-none");
+  }
+  $("#paymentError").hide(); 
+});
+     
+        
+        if ($("#card").is(":checked")) {
+          const cardName = $("#cardName");
+          const cardNum = $("#cardNumber");
+          const expiry = $("#expiry");
+          const cvv = $("#cvv");
+
+          if (cardName.val().trim() === "") invalidate(cardName); else validate(cardName);
+          if (!/^\d{16}$/.test(cardNum.val().replace(/\s/g, ''))) invalidate(cardNum); else validate(cardNum);
+          if (expiry.val().trim() === "") invalidate(expiry); else validate(expiry);
+          if (!/^\d{3}$/.test(cvv.val().trim())) invalidate(cvv); else validate(cvv);
+        }
+
+       
+        const terms = $("#termsCheck");
+        if (!terms.is(":checked")) invalidate(terms); else validate(terms);
+
+       
+        if (!valid) {
+          $('html, body').animate({
+            scrollTop: $(".is-invalid:first").offset().top - 80
+          }, 600);
+          return false;
+        }
+
+        alert("Form submitted successfully!");
+        this.reset();
+        $(".form-control").removeClass("is-valid is-invalid");
+      });
+    }
+
+    $(window).on("load", bindings);
+  </script>
+
+<body class="bg-light">
+
+  <div class="container my-5">
+    <div class="text-center mb-4">
+      <span class="text-secondary">Cart → </span>
+      <span class="text-secondary">Address → </span>
+      <span class="text-secondary">Payment → </span>
+      <span class="text-primary fw-bold">Checkout</span>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-7">
+        <div class="card border-primary shadow-sm">
+          <div class="card-body">
+            <h4 class="text-primary mb-3 text-center">Customer & Shipping Form</h4>
+
+            <form id="checkoutForm" novalidate>
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" id="fullName" class="form-control">
+                  <div class="invalid-feedback">Full name must be at least 3 characters.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" id="email" class="form-control">
+                  <div class="invalid-feedback">Enter a valid email address.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Phone</label>
+                  <input type="tel" id="phone" class="form-control">
+                  <div class="invalid-feedback">Phone must be at least 10 digits.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">City</label>
+                  <input type="text" id="city" class="form-control">
+                  <div class="invalid-feedback">City is required.</div>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label">Address</label>
+                  <input type="text" id="address" class="form-control">
+                  <div class="invalid-feedback">Address is required.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Postal Code</label>
+                  <input type="text" id="postal" class="form-control">
+                  <div class="invalid-feedback">Postal code must be 4–6 digits.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Country</label>
+                  <select id="country" class="form-select">
+                    <option value="">Select</option>
+                    <option>Pakistan</option>
+                    <option>UAE</option>
+                    <option>USA</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a country.</div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sameAddress" checked>
+                    <label class="form-check-label" for="sameAddress">
+                      Billing same as shipping
+                    </label>
+                  </div>
+                </div>
+
+                <hr class="my-3">
+
+                <h5>Payment Method</h5>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="card" value="card">
+                    <label class="form-check-label" for="card">Card</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="cod" value="cod">
+                    <label class="form-check-label" for="cod">Cash on Delivery</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="wallet" value="wallet">
+                    <label class="form-check-label" for="wallet">Wallet</label>
+                  </div>
+                 <div class="invalid-feedback" id="paymentError" style="display:none;">Select a payment method.</div>
+
+                </div>
+
+                <div id="cardDetails" class="d-none mt-3">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Cardholder Name</label>
+                      <input type="text" id="cardName" class="form-control">
+                      <div class="invalid-feedback">Enter cardholder name.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Card Number</label>
+                      <input type="text" id="cardNumber" class="form-control" placeholder="xxxx xxxx xxxx xxxx">
+                      <div class="invalid-feedback">Enter valid card number.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Expiry</label>
+                      <input type="text" id="expiry" class="form-control" placeholder="MM/YY">
+                      <div class="invalid-feedback">Enter expiry date.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">CVV</label>
+                      <input type="password" id="cvv" class="form-control" placeholder="123">
+                      <div class="invalid-feedback">Enter CVV.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="termsCheck">
+                  <label class="form-check-label" for="termsCheck">
+                    I agree to the terms & conditions
+                  </label>
+                  <div class="invalid-feedback">You must agree before placing order.</div>
+                </div>
+
+                <button class="btn btn-primary w-100" id="placeOrder" type="submit" disabled>Place Order</button>
+
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-5">
+        <div class="card border-success shadow-sm sticky-top" style="top:1rem;">
+          <div class="card-body">
+            <h5 class="text-success mb-3">Order Summary</h5>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Taxi Ride</span><span>1 × $200</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Extra Luggage</span><span>1 × $20</span>
+              </li>
+            </ul>
+            <div class="d-flex justify-content-between"><span>Subtotal</span><span>$220</span></div>
+            <div class="d-flex justify-content-between"><span>Shipping</span><span>$5</span></div>
+            <div class="d-flex justify-content-between"><span>Tax</span><span>$10</span></div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold"><span>Total</span><span>$235</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 </body>
 </html>
