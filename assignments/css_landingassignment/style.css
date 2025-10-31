@@ -225,11 +225,11 @@ body {
 
 .prices-right {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-basis: 40%;
   gap: 40px;
-  flex-wrap: wrap;
 }
 
 .price-box {
