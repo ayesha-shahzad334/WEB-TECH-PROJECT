@@ -1,0 +1,150 @@
+
+
+.admin-panel {
+  background-color: #f3f4f6;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #1f2937;
+}
+
+.admin-navbar {
+  background-color: #f2c94c;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin-navbar .navbar-brand,
+.admin-navbar .nav-link {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+.admin-navbar .nav-link:hover {
+  color: #000 !important;
+}
+
+
+.admin-panel h1 {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+
+.admin-card {
+  border: none;
+  border-radius: 18px;
+  min-height: 190px;
+  color: #111827;
+}
+
+.admin-card-yellow {
+  background-color: #c2aa4d; 
+}
+
+.admin-card-grey {
+  background-color: #5a657c; 
+}
+
+.admin-card .card-body {
+  padding: 1.8rem;
+}
+
+.admin-card .card-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-card .card-text {
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+
+.admin-card .btn {
+  background-color: #1f2937;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+}
+
+
+.admin-panel label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.admin-panel .form-control,
+.admin-panel .form-select {
+  border-radius: 10px;
+  border: 1px solid rgba(242, 201, 76, 0.5);
+  padding: 10px 12px;
+}
+
+
+.admin-panel table {
+  background-color: #f9fafb;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(242, 201, 76, 0.6);
+}
+
+.admin-panel thead {
+  background-color: rgba(242, 201, 76, 0.85);
+  color: #111827;
+}
+
+.admin-panel table th {
+  font-weight: 600;
+  padding: 14px;
+}
+
+.admin-panel table td {
+  padding: 13px;
+}
+
+.admin-panel table td,
+.admin-panel table th {
+  vertical-align: middle;
+  border-color: rgba(242, 201, 76, 0.35);
+}
+
+
+
+
+.admin-panel .btn-primary {
+  background-color: #f2c94c;
+  color: #111827;
+  border: none;
+  padding: 6px 14px;
+}
+
+.admin-panel .btn-primary:hover {
+  background-color: #eab308;
+}
+
+
+.admin-panel .btn-danger {
+  background-color: #9ca3af;
+  color: #111827;
+  border: none;
+  padding: 6px 14px;
+}
+
+.admin-panel .btn-danger:hover {
+  background-color: #6b7280;
+}
+
+
+.admin-panel .btn-success {
+  background-color: #f2c94c;
+  color: #111827;
+  border: none;
+  padding: 8px 16px;
+}
+
+.admin-panel .btn-success:hover {
+  background-color: #eab308;
+}

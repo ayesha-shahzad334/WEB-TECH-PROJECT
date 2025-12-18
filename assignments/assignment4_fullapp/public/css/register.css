@@ -1,0 +1,45 @@
+
+.register-page {
+  background: url("/image1/backgroundimage.jpg") center / cover no-repeat fixed;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+.register-box {
+  background: rgba(231, 183, 49, 0.774);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(20, 40, 80, 0.25);
+}
+
+.register-title {
+  font-weight: 700;
+  color: #000000;
+}
+
+.register-input {
+  border-radius: 12px;
+  padding: 12px 15px;
+  border: 2px solid #f0c75e;
+  background-color: #fffdf7;
+  color: #1e293b;
+}
+
+.register-input:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 0.2rem rgba(30, 58, 138, 0.25);
+}
+
+.register-btn {
+  background-color: #f2c94c;
+  color: #0d162e;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 600;
+  border: none;
+}
+
+.register-btn:hover,
+.register-btn:focus {
+  background-color: #e0b63f;
+  color: #060e24;
+}

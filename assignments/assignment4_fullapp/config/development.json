@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "myPrivateKey",
+  "db": "mongodb://127.0.0.1:27017/ecommercedb",
+  "port": 3000,
+  "sessionSecret": "MySessionSecret"
+}

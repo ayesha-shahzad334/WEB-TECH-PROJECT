@@ -8,31 +8,39 @@ const adminRoutes = require('./routes/admin');
 const app = express();
 const PORT = config.port || 3000;
 
-// --- Middleware ---
+
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views'); // make sure views folder is correct
+app.set('views', __dirname + '/views'); 
 app.use(expressLayouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/admin', (req, res, next) => {
+  res.locals.layout = 'admin-layout';
+  next();
+});
 
-// Default layout for main site
+
+
 app.set('layout', 'layout');
 
-// --- MongoDB Connection ---
+
 mongoose.connect(config.db)
   .then(() => console.log("✔ Connected to MongoDB"))
   .catch(err => console.log("❌ MongoDB Connection Error:", err));
 
-// --- Admin Routes with admin layout ---
+//   app.get('/admin/dashboard', checkSessionAuth, (req, res) => {
+//   res.render('admin/dashboard', { user: req.session.user });
+// });
+
+
 app.use('/admin', (req, res, next) => {
-  res.locals.layout = 'admin-layout'; // use admin layout for admin routes
+  res.locals.layout = 'admin-layout'; 
   next();
 }, adminRoutes);
 
-// --- Main Site Routes ---
 
-// Homepage / Order Page
+
 app.get('/', async (req, res) => {
   try {
     const taxis = await Taxi.find(); // fetch all products
@@ -43,7 +51,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Products Page
+
 app.get('/products', async (req, res) => {
   try {
     let { page = 1, limit = 10, category, minPrice, maxPrice } = req.query;
@@ -77,12 +85,12 @@ app.get('/products', async (req, res) => {
   }
 });
 
-// Checkout Page
+
 app.get('/checkout', (req, res) => {
   res.render('checkout', { title: 'Checkout' });
 });
 
-// --- Start Server ---
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -2,7 +2,7 @@
 <<div class="container mt-3 pt-5">
   <h1 class="mb-4 text-center">Products Page</h1>
 
-  <!-- Filter form -->
+  
   <form method="GET" class="mb-4 d-flex flex-wrap gap-2 justify-content-center">
     <select name="category" class="form-select" style="width:150px">
       <option value="">All Categories</option>
@@ -17,7 +17,7 @@
     <button type="submit" class="btn btn-warning">Filter</button>
   </form>
 
-  <!-- Products -->
+  
   <% if(taxis.length === 0) { %>
     <p class="text-center fw-bold">No products found for this filter.</p>
   <% } else { %>
@@ -34,7 +34,7 @@
     </div>
   <% } %>
 
-  <!-- Pagination -->
+  
   <% if(totalPages >= 1) { %>
     <nav aria-label="Page navigation" class="mt-4 d-flex justify-content-center">
       <ul class="pagination">

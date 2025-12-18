@@ -8,11 +8,10 @@
   padding: 200px 60px 100px;
   color: antiquewhite;
 }
-/* ---------- Product Card ---------- */
 .product-card {
   width: 220px;
-  background-color: #fffacd; /* Light yellow */
-  border: 1px solid #f0e68c; /* Khaki border */
+  background-color: #fffacd; 
+  border: 1px solid #f0e68c; 
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
@@ -31,28 +30,27 @@
   border-radius: 8px;
 }
 
-/* ---------- Product Text ---------- */
 .product-card h3,
 .product-card p {
-  color: #000; /* black text for name, category, price, description */
+  color: #000; 
 }
 
 p{
   color: #8b4513;
 }
 
-/* ---------- Heading ---------- */
+
 h1 {
-  color: #b8860b; /* DarkGoldenRod */
+  color: #b8860b; 
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* ---------- Filter Button ---------- */
+
 .btn-warning {
-  background-color: #b8860b; /* GoldenBrown */
-  border-color: #a0522d; /* Sienna darker border */
-  color: #fff; /* white text */
+  background-color: #b8860b; 
+  border-color: #a0522d; 
+  color: #fff;
 }
 
 .btn-warning:hover {
@@ -61,34 +59,34 @@ h1 {
   color: #fff;
 }
 
-/* ---------- Pagination ---------- */
+
 .pagination .page-item .page-link {
-  color: #000; /* black page numbers */
-  background-color: #fffacd; /* light yellow background */
+  color: #000; 
+  background-color: #fffacd; 
   border: 1px solid #f0e68c;
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #b8860b; /* golden brown active */
+  background-color: #b8860b; 
   border-color: #a0522d;
-  color: #fff; /* white text for active page */
+  color: #fff; 
 }
 
 .pagination .page-item .page-link:hover {
-  background-color: #ffd700; /* gold hover */
+  background-color: #ffd700; 
   border-color: #daa520;
   color: #000;
 }
 
-/* ---------- Body background ---------- */
+
 body {
-  background-color: #fff8dc; /* AntiqueWhite */
+  background-color: #fff8dc; 
 }
 
-/* ---------- Responsive ---------- */
+
 @media (max-width: 576px) {
   .product-card {
-    width: 90%; /* full width on mobile */
+    width: 90%; 
   }
 
   .d-flex.flex-wrap.justify-content-center.gap-4 {

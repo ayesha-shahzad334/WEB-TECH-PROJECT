@@ -39,7 +39,7 @@ const comfortProducts = await Taxi.countDocuments({ category: { $regex: /^Comfor
   }
 });
 
-// Product List (with optional category filtering)
+
 router.get('/products', async (req, res) => {
   const { category } = req.query;
 
