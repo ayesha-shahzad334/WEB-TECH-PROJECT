@@ -1,0 +1,70 @@
+<div class="bg">
+  <div class="container mt-3 pt-5">
+    <h1 class="mb-4 text-center">Products Page</h1>
+
+    <form method="GET" class="mb-4 d-flex flex-wrap gap-2 justify-content-center">
+      <select name="category" class="form-select" style="width:150px">
+        <option value="">All Categories</option>
+        <option value="Premium" <%= filters.category==='Premium' ? 'selected' : '' %>>Premium</option>
+        <option value="Economy" <%= filters.category==='Economy' ? 'selected' : '' %>>Economy</option>
+        <option value="Comfort" <%= filters.category==='Comfort' ? 'selected' : '' %>>Comfort</option>
+      </select>
+
+      <input type="number" name="minPrice" placeholder="Min Price" class="form-control" style="width:100px" value="<%= filters.minPrice || '' %>">
+      <input type="number" name="maxPrice" placeholder="Max Price" class="form-control" style="width:100px" value="<%= filters.maxPrice || '' %>">
+
+      <button type="submit" class="btn btn-warning">Filter</button>
+    </form>
+
+    <% if (taxis.length === 0) { %>
+      <p class="text-center fw-bold">No products found for this.</p>
+    <% } else { %>
+      <div class="product-list d-flex flex-wrap justify-content-center gap-4">
+
+        <% taxis.forEach(taxi => { %>
+          <div class="product-card shadow p-3 rounded text-center">
+
+            <img src="<%= taxi.image %>" alt="<%= taxi.name %>" class="img-fluid">
+
+            <h3 class="mt-2"><%= taxi.name %></h3>
+
+            <p class="mb-1">Category: <%= taxi.category %></p>
+
+            <p class="mb-1">Price: $<%= taxi.price %></p>
+
+            <p><%= taxi.description %></p>
+
+            <!-- ADD TO CART FORM -->
+            <form action="/cart/add/<%= taxi._id %>" method="POST">
+              <input type="hidden" name="product[_id]" value="<%= taxi._id %>">
+              <input type="hidden" name="product[name]" value="<%= taxi.name %>">
+              <input type="hidden" name="product[price]" value="<%= taxi.price %>">
+
+              <button type="submit" class="btn btn-success mt-2">
+                Add to Cart
+              </button>
+            </form>
+
+          </div>
+        <% }) %>
+
+      </div>
+    <% } %>
+
+    <% if (totalPages >= 1) { %>
+      <nav aria-label="Page navigation" class="mt-4 d-flex justify-content-center">
+        <ul class="pagination">
+          <% for (let i = 1; i <= totalPages; i++) { %>
+            <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+              <a class="page-link"
+                 href="?page=<%= i %><%= filters.category ? '&category=' + filters.category : '' %><%= filters.minPrice ? '&minPrice=' + filters.minPrice : '' %><%= filters.maxPrice ? '&maxPrice=' + filters.maxPrice : '' %>">
+                <%= i %>
+              </a>
+            </li>
+          <% } %>
+        </ul>
+      </nav>
+    <% } %>
+
+  </div>
+</div>

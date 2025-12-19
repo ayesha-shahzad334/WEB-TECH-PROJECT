@@ -1,0 +1,18 @@
+
+<div class="login-page d-flex justify-content-center align-items-center min-vh-100">
+  <div class="login-box" style="max-width:400px; width:100%;">
+    <h2 class="login-title text-center mb-4">Login</h2>
+
+    <% if (error) { %>
+      <div class="login-error alert alert-danger text-center">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <form action="/auth/login" method="POST">
+      <input type="email" name="email" class="form-control login-input mb-3" placeholder="Email" required>
+      <input type="password" name="password" class="form-control login-input mb-3" placeholder="Password" required>
+      <button class="btn login-btn w-100">Login</button>
+    </form>
+  </div>
+</div>

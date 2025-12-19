@@ -1,0 +1,71 @@
+<div class="checkout-bg d-flex justify-content-center align-items-start">
+  <div class="card shadow-lg p-4 checkout-card border-0 col-md-8 mt-5">
+    <h2 class="text-center fw-bold mb-4">Checkout</h2>
+
+    <form action="/checkout" method="POST">
+      <div class="row g-4">
+
+        <!-- Billing Information -->
+        <div class="col-md-6">
+          <h5 class="mb-3 section-heading">Billing Information</h5>
+
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="customerName" class="form-control" placeholder="Ayesha Shahzad" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="ayesha@example.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" name="phone" class="form-control" placeholder="+23 111 222 333">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" placeholder="Street, City, Country">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <select name="paymentMethod" class="form-select" required>
+              <option value="">Select Method</option>
+              <option>Credit Card</option>
+              <option>Debit Card</option>
+              <option>PayPal</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="col-md-6">
+          <h5 class="mb-3 section-heading">Order Summary</h5>
+          <div class="order-summary rounded p-4">
+            <% if (!cart || cart.items.length === 0) { %>
+              <p class="text-center fw-bold">Your cart is empty</p>
+            <% } else { %>
+              <% cart.items.forEach(item => { %>
+                <p class="d-flex justify-content-between mb-2">
+                  <span><%= item.name %> x <%= item.quantity %></span>
+                  <span>$<%= item.price * item.quantity %></span>
+                </p>
+              <% }) %>
+              <hr>
+              <p class="fw-bold d-flex justify-content-between">
+                <span>Total:</span>
+                <span>$<%= cart.totalPrice %></span>
+              </p>
+            <% } %>
+            <button type="submit" class="btn btn-pay w-100 mt-3" <%= (!cart || cart.items.length === 0) ? 'disabled' : '' %>>
+              Place Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

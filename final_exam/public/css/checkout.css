@@ -1,0 +1,40 @@
+.checkout-bg {
+  background: url("/image1/backgroundimage.jpg") center/cover no-repeat fixed;
+  min-height: 100vh;
+  padding-top: 160px;  
+  padding-bottom: 40px;
+}
+
+.checkout-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  max-width: 850px;
+  padding: 35px;
+  transform: scale(0.95);  
+}
+
+.section-heading {
+  color: #f5b400;
+  font-weight: 600;
+}
+
+.form-control,
+.form-select {
+  border: 1.5px solid #f5b400;
+}
+
+.btn-pay {
+  background-color: #f5b400;
+  color: black;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-pay:hover {
+  background-color: #d4a400;
+  color: white;
+}
+
+.order-summary {
+  background-color: #fffbea;
+}

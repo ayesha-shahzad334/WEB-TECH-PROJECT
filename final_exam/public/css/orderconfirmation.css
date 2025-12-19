@@ -1,0 +1,37 @@
+
+.order-confirmation-main {
+  padding-top: 120px; 
+  padding-bottom: 50px;
+  min-height: 80vh;
+  background-color: #f5f5f5;
+}
+
+
+.order-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-top: 6px solid #ffc107; 
+  border-radius: 12px;
+  padding: 30px;
+}
+
+
+.customer-info p,
+.order-items ul li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+
+.order-items h5.text-end {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.order-container .btn-success {
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+}

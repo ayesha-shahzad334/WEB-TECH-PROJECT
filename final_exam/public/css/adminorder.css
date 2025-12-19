@@ -1,0 +1,10 @@
+.admin-main {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
